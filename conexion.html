@@ -1,0 +1,43 @@
+<?php
+$servidor = "localhost";
+$usuario = "root";
+$contra = "";
+$BD = "jas";
+
+$conexion = mysqli_connect ($servidor, $usuario, $contra, $BD);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexion</title>
+</head>
+<body>
+    <form action="#" name="ejemplo" method="post">
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="apellido" placeholder="Apellido">
+        <input type="email" name="email" placeholder="correo">
+        <input type="number" name="numero" placeholder="telefono">
+        <input type="text" name="carrera" placeholder="Carrera">
+        <input type="text" name="direccion" placeholder="Dirección">
+        <input type="submit" name="registro">
+        <input type="reset">
+    </form>
+</body>
+<?php
+if(isset($_POST['registros'])){
+    $nombre = $_POST ['nombre'];
+    $apellido = $_POST ['apellido'];
+    $email = $_POST ['email'];
+    $numero = $_POST ['numero'];
+    $carrera = $_POST ['carrera'];
+    $direccion = $_POST ['direccion'];
+
+    $insertarDatos = "INSERT INTO registros VALUES('','$nombre','$apellido','$email','$numero','$carrera','$direccion')";
+
+    $ejecutarInsertar = mysqli_query ($conexion, $insertarDatos);
+
+}
+?>
+</html>
